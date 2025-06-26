@@ -1,1 +1,0 @@
-{"state": {"actor": "enemy", "actorHP": 50, "actorEnergy": 100, "actorShield": 0, "opponent": "player", "opponentHP": 100, "opponentEnergy": 50, "opponentShield": 0}, "action": "skip", "reward": -2, "next_state": {"actor": "enemy", "actorHP": 50, "actorEnergy": 100, "actorShield": 0, "opponent": "player", "opponentHP": 100, "opponentEnergy": 50, "opponentShield": 0}}
