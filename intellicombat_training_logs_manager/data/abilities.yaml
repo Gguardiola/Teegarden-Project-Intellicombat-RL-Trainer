@@ -1,0 +1,33 @@
+- name: "Banana hit"
+  type: attack
+  damage: 10
+  cost: 10
+
+- name: "Heal"
+  type: heal
+  amount: 10
+  cost: 30
+
+- name: "Heavy Shot"
+  type: attack
+  damage: 50
+  cost: 50
+
+- name: "Precise Shot"
+  type: attack
+  damage: 10
+  cost: 20
+  ignoreShield: 1
+
+- name: "Laser Banana"
+  type: attack
+  damage: 20
+  cost: 15
+
+- name: "shield"
+  type: shield
+  cost: 10
+
+- name: "skip"
+  type: skip
+  recover: 20

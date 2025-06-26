@@ -1,0 +1,4 @@
+tensorflow==2.13.0
+tf2onnx==1.16.1
+numpy>=1.21
+scikit-learn
