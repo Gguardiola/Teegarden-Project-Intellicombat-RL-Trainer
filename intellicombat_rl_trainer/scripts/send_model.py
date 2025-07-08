@@ -21,4 +21,3 @@ client.fput_object(
     "intellicombat_model_ready.onnx",
     "../model/intellicombat_model_ready.onnx"
 )
-print("File uploaded!")

@@ -1,8 +1,11 @@
 import tensorflow as tf
 import tf2onnx
+import datetime
 
 KERAS_MODEL_PATH = "model/intellicombat_model.keras"
-ONNX_MODEL_PATH = "model/intellicombat_model_ready.onnx"
+ONNX_MODEL_PATH = "model/intellicombat_model_ready_{}.onnx".format(
+    datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+)
 
 print(f"Loading model from {KERAS_MODEL_PATH}...")
 model = tf.keras.models.load_model(KERAS_MODEL_PATH)
