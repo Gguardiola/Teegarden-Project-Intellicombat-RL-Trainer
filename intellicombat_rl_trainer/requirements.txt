@@ -1,4 +1,5 @@
-tensorflow==2.13.0
+tensorflow==2.14.0
 tf2onnx==1.16.1
-numpy>=1.21
+numpy>=1.23.5
 scikit-learn
+minio-py
