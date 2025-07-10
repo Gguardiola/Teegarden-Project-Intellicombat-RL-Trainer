@@ -35,7 +35,6 @@ class Action:
             result["shield"] = True
 
         elif self.type == "skip":
-            # Recuperar energía
             recovered = self.data.get("recover", 20)
             actor.energy = min(actor.max_energy, actor.energy + recovered)
             result["energyRecovered"] = recovered

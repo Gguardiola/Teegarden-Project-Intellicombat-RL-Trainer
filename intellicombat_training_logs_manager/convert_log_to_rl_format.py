@@ -19,7 +19,6 @@ def load_ability_data():
 
     return data
 
-
 def convert_log_to_rl_format(combat_log: list, winner: str) -> list:
 
     ability_data = load_ability_data()
