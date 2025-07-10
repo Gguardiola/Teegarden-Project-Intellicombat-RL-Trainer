@@ -1,13 +1,18 @@
-import os
+import time
+import random
+import json
 import yaml
+import os
+import sys
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.abspath(os.path.join(current_dir, '.'))
+sys.path.insert(0, root_dir)
 
 from engine.rewards import compute_reward
 
 
-def load_ability_data():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    yaml_path = os.path.join(current_dir, "data", "abilities.yaml")
-
+def load_ability_data(yaml_path):
     with open(yaml_path, "r") as f:
         data = yaml.safe_load(f)
 
@@ -20,10 +25,7 @@ def load_ability_data():
     return data
 
 
-def convert_log_to_rl_format(combat_log: list, winner: str) -> list:
-
-    ability_data = load_ability_data()
-
+def convert_log_to_rl_format(combat_log, ability_data, winner):
     rl_dataset = []
     enemy_turn_indices = []
 
@@ -83,9 +85,43 @@ def convert_log_to_rl_format(combat_log: list, winner: str) -> list:
             "next_state": next_state
         })
 
-    # Penaliza si pierde
     if winner != "enemy" and enemy_turn_indices:
         last_enemy_index = enemy_turn_indices[-1]
         rl_dataset[last_enemy_index]["reward"] = 0
 
     return rl_dataset
+
+
+
+if __name__ == "__main__":
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    root_dir = os.path.abspath(os.path.join(current_dir, '.'))
+
+    raw_logs_dir = os.path.join(current_dir, "raw_logs")
+    output_dir = os.path.join(current_dir, "training_converted_real_logs")
+    os.makedirs(output_dir, exist_ok=True)
+
+    ability_data = load_ability_data(os.path.join(root_dir, "data", "abilities.yaml"))
+
+    for filename in os.listdir(raw_logs_dir):
+        if filename.endswith(".json"):
+            input_path = os.path.join(raw_logs_dir, filename)
+            with open(input_path, "r") as f:
+                log = json.load(f)
+
+            if "turns" not in log:
+                print(f"Skipping {filename}: no 'turns' key.")
+                continue
+
+            winner = log.get("winner", "")
+            dataset = convert_log_to_rl_format(log["turns"], ability_data, winner)
+
+            timestamp = int(time.time() * 1000)
+            rand_suffix = random.randint(1000, 9999)
+            output_filename = f"real_combat_log_{timestamp}_{rand_suffix}.json"
+            output_path = os.path.join(output_dir, output_filename)
+
+            with open(output_path, "w") as out_f:
+                json.dump(dataset, out_f, indent=2)
+
+            print(f"Converted {filename} -> {output_filename}")

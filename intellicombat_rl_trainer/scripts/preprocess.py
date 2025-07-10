@@ -52,7 +52,7 @@ def preprocess():
     with open(OUTPUT_FILE, "w") as out:
         json.dump(all_data, out, indent=2)
 
-    print(f"Prepocess donde successfuly, stored at {OUTPUT_FILE}")
+    print(f"Preprocess done successfully, stored at {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     preprocess()
