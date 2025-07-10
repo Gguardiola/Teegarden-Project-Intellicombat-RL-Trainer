@@ -1,7 +1,7 @@
 import os
 import yaml
 
-from engine.rewards import compute_reward
+from intellicombat_training_logs_manager.engine.rewards import compute_reward
 
 
 def load_ability_data():
