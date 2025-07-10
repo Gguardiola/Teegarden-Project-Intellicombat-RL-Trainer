@@ -6,8 +6,9 @@ echo ""
 echo "- Before starting:"
 echo "-- Remember to populate the /training_simulated_log folder and entries into MINIO collection in order to train and create a consistent AI model."
 
+set -e
 
-set -e 
+cd /code/app/intellicombat_rl_trainer
 
 echo "Preprocessing data..."
 python3 scripts/preprocess.py

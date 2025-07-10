@@ -17,4 +17,4 @@ onnx_model, _ = tf2onnx.convert.from_keras(
     output_path=ONNX_MODEL_PATH
 )
 
-print("Conversion done successfuly!")
+print("Conversion done successfully!")
