@@ -82,7 +82,6 @@ def convert_log_to_rl_format(combat_log: list, winner: str) -> list:
             "next_state": next_state
         })
 
-    # Penaliza si pierde
     if winner != "enemy" and enemy_turn_indices:
         last_enemy_index = enemy_turn_indices[-1]
         rl_dataset[last_enemy_index]["reward"] = 0

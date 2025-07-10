@@ -11,7 +11,7 @@ client = Minio(
 )
 
 BUCKET_NAME = "models"
-MODEL_DIR = "../model"
+MODEL_DIR = "./model"
 
 files = glob.glob(os.path.join(MODEL_DIR, "intellicombat_model_ready_*.onnx"))
 if not files:
