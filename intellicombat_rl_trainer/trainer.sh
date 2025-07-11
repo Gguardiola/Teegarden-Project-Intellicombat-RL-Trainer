@@ -9,7 +9,7 @@ echo "-- Remember to populate the /training_simulated_log folder and entries int
 set -e
 
 cd /code/app/intellicombat_rl_trainer
-
+PYTHON=$(which python3)
 echo "Preprocessing data..."
 python3 scripts/preprocess.py
 
