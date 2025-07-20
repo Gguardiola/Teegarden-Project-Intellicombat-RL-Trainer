@@ -28,11 +28,11 @@ if __name__ == "__main__":
     abilities = load_yaml("data/abilities.yaml")
 
     if len(sys.argv) != 2 or not sys.argv[1].isdigit():
-        print("Usage: python script.py <n simulations>")
+        print("Usage - python simulate_combats.py [N simulations]")
         sys.exit(1)
 
     num_simulations = int(sys.argv[1])
-    print("running {} simulations...".format(num_simulations))
+    print(f"Running {num_simulations} simulations...")
     for _ in range(num_simulations):
         player_abilities = select_random_abilities(abilities)
         enemy_abilities = select_random_abilities(abilities)
@@ -47,4 +47,4 @@ if __name__ == "__main__":
         # for line in log:
         #     print(line)
 
-    print("Done! {} simulations executed!".format(num_simulations))
+    print(f"Done! {num_simulations} simulations executed!")
