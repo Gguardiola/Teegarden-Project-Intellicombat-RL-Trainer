@@ -6,7 +6,7 @@ echo ""
 echo "- Before starting:"
 echo "-- Remember to populate the /training_simulated_logs or /training_converted_real_logs folders in order to train and create a consistent AI model."
 
-
+. /etc/environment
 set -e 
 
 echo "Preprocessing data..."

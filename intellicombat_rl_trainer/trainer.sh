@@ -4,6 +4,7 @@ echo "====      INTELLICOMBAT MODEL TRAINER     ====="
 echo "==============================================="
 echo ""
 
+. /etc/environment
 set -e
 
 cd /code/app/intellicombat_rl_trainer
